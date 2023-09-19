@@ -1,0 +1,235 @@
+<!-- Page 1 : formulaire.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Inclure votre fichier CSS compilé -->
+    <script src="js/calculateGaineInox.js"></script>
+    <script src="js/devisGeneration.js"></script>
+    <script src="js/calculateDPI-I.js"></script>
+    <script src="js/showSection.js"></script>
+    <script src="js/infoClientGeneration.js"></script>
+    <script src="js/calculateCoudeDPI-I.js"></script>
+    <script src="js/setGetJson.js"></script>
+    <script src="js/saveInfoJson.js"></script>
+    <script src="js/saveInfoJson_coude.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <title>HOAX Calculator</title>
+  </head>
+  <body>
+    <!-- Menu de navigation -->
+    <ul class="menuTop">
+      <li class="backgroundInfoClient">
+        <a href="#" onclick="showSection('section1')">Client</a>
+      </li>
+      <li class="backgroundDimMaison">
+        <a href="#" onclick="showSection('section2')">Maison</a>
+      </li>
+      <li class="backgroundConduit">
+        <a href="#" onclick="showSection('section3')">Conduit</a>
+      </li>
+      <li class="backgroundDevis">
+        <a href="#" onclick="showSection('section4')">Devis</a>
+      </li>
+    </ul>
+
+    <!-- Contenu des sections -->
+    <div id="section1" style="display: none">
+      <!-- Contenu de la section 1 -->
+
+      <div class="containerInfoClient">
+        <form>
+          <!-- Name -->
+          <label
+            for="nom"
+            class="block mt-4 mb-2 text-lg font-medium text-gray-900 dark:text-white"
+            >Nom :</label
+          >
+          <input
+            type="text"
+            id="nom"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+          <!-- SurName -->
+          <label
+          for="prenom"
+          class="block mt-4 mb-2 text-lg font-medium text-gray-900 dark:text-white"
+          >Prenom :</label
+        >
+        <input
+          type="text"
+          id="prenom"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+          <!-- Adress -->
+          <label for="adresse">Adresse :</label>
+          <input type="text" id="adresse" required />
+          <!-- ZIP-->
+          <label for="codepostal">Code postal</label>
+          <input id="codepostal" name="codepostal" type="text" required />
+          <!-- Phone-->
+          <label for="telephone">Téléphone</label>
+          <input
+            id="telephone"
+            name="telephone"
+            type="tel"
+            placeholder="par ex&nbsp;: +3375500000000"
+            required
+          />
+          <!-- Email-->
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="exemple@domaine.com"
+            required
+          />
+
+          <button type="button" onclick="saveInfoJson()">
+            Enregistrer Info Client
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="section2" style="display: none">
+      <!-- Contenu de la section 2 -->
+      <h1>Section 2</h1>
+      <p>Contenu de la section 2...</p>
+    </div>
+
+    <div id="section3" style="display: none">
+      <!-- Contenu de la section 3 -->
+      <h1>Caclul des fournitures pour le conduit de fumée</h1>
+
+      <!-- Input pour charger le fichier Excel -->
+      <input type="file" id="excelFileInput" accept=".xlsx" />
+      <br />
+      <br />
+
+      <form>
+        <label for="quantity">GAINE INOX :</label>
+        <input type="number" id="quantityMlGaineInox" min="0" value="0" />
+
+        <!-- Cases à cocher pour choisir le diamètre -->
+        <label>
+          <input type="checkbox" id="diameter125" name="diameter" value="125" />
+          ⌀ 125 cm
+        </label>
+        <label>
+          <input type="checkbox" id="diameter150" name="diameter" value="150" />
+          ⌀ 150 cm
+        </label>
+        <label>
+          <input type="checkbox" id="diameter180" name="diameter" value="180" />
+          ⌀ 180 cm
+        </label>
+        <label>
+          <input type="checkbox" id="diameter180" name="diameter" value="200" />
+          ⌀ 200 cm
+        </label>
+
+        <!-- Zone pour afficher le prix calculé -->
+        <div id="priceResult"></div>
+
+        <button type="button" onclick="calculatePriceGaineInox()">
+          Calculer le Prix
+        </button>
+      </form>
+      <br />
+      <br />
+
+      <!-- !!!!!!!!!!!!!!!!!!LONGUEURS DPI-i!!!!!!!!!!!!!!!!!!!! -->
+
+      <form>
+        <h1>Longueur Double Paroies Isolées</h1>
+        <label for="quantity">Quantité Longueur DPI-I :</label>
+        <input
+          type="number"
+          id="quantityDPI-I"
+          min="0"
+          value="0"
+          class="quantity-input"
+        />
+        <br />
+        <!-- Cases à cocher pour choisir le diamètre -->
+        <label for="diameter">Diamètre DPI-I:</label>
+        <select id="diameter" name="diameter">
+          <option value="150">⌀ 150 cm</option>
+          <option value="180">⌀ 180 cm</option>
+          <option value="200">⌀ 200 cm</option>
+        </select>
+        <br />
+        <!-- Cases à cocher pour choisir le sizeètre -->
+        <label for="size">Taille DPI-I:</label>
+        <select id="size" name="size">
+          <option value="25">25 cm</option>
+          <option value="50">50 cm</option>
+          <option value="100">100 cm</option>
+        </select>
+
+        <!-- Zone pour afficher le prix calculé -->
+        <div id="priceResultDPI-I"></div>
+        <button type="button" onclick="savePriceToLocalStorage()">
+          Ajouter à la configuration
+        </button>
+      </form>
+
+      <!-- !!!!!!!!!!!!!!!!!!COUDES DPI-i!!!!!!!!!!!!!!!!!!!! -->
+
+      <form>
+        <h1>Coudes Double Paroies Isolées</h1>
+        <label for="quantity">Quantité Coude DPI-I :</label>
+        <input
+          type="number"
+          id="quantityCoudeDPI-I"
+          min="0"
+          value="0"
+          class="quantityCoudeDPI-input"
+        />
+        <br />
+        <!-- Cases à cocher pour choisir le diamètre -->
+        <label for="diamCoudeDpiI">Diamètre coude DPI-I:</label>
+        <select id="diamCoudeDpiI" name="diamCoudeDpiI">
+          <option value="80">⌀ 80 mm</option>
+          <option value="100">⌀ 100 mm</option>
+          <option value="130">⌀ 130 mm</option>
+          <option value="150">⌀ 150 mm</option>
+          <option value="180">⌀ 180 mm</option>
+          <option value="200">⌀ 200 mm</option>
+        </select>
+        <br />
+        <!-- Cases à cocher pour choisir le sizeètre -->
+        <label for="coudeInclinaisonDpiI">Degré d'inclinaison:</label>
+        <select id="coudeInclinaisonDpiI" name="coudeInclinaisonDpiI">
+          <option value="15">15°</option>
+          <option value="30">30°</option>
+          <option value="45">45°</option>
+          <option value="90">90°</option>
+        </select>
+
+        <!-- Zone pour afficher le prix calculé -->
+        <div id="priceResultCoudeDPI-I"></div>
+        <button type="button" onclick="savePriceCoudeToLocalStorage()">
+          Ajouter à la configuration
+        </button>
+      </form>
+    </div>
+
+    <div id="section4" style="display: none">
+      <!-- Contenu de la section 4 -->
+
+      <div id="summary">
+        <!-- Les données récupérées seront affichées ici -->
+      </div>
+
+      <div id="devisContainer">
+        <!-- Les données récupérées seront affichées ici -->
+      </div>
+    </div>
+  </body>
+</html>
