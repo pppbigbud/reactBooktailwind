@@ -13,7 +13,13 @@ body {
   font-family: Arial, sans-serif; /* Police de caractères par défaut */
   font-size: 16px; /* Taille de police par défaut */
   line-height: 1.5; /* Hauteur de ligne par défaut */
-  background-color: var(--colorVar5);  /* Couleur de fond par défaut */
+  background-image: radial-gradient(circle farthest-side, var(--colorVar5), var(--colorVar4));
+}
+
+.containerLoadFile{
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
 }
 
 :root {

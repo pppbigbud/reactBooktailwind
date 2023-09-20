@@ -11,3 +11,22 @@
     display: flex;
     flex-direction: column;
 }
+
+.containerAvatarInfoClient{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: -5vh;
+}
+
+.containerMessageSuccess {
+    position: relative;
+}
+
+.MessageSuccess{
+    position: absolute;
+    top: 2vh;
+    right: 5vh;
+    z-index: 500;
+}

@@ -11,3 +11,6 @@ function showSection(sectionId) {
       selectedSection.style.display = "block";
     }
   }
+
+
+

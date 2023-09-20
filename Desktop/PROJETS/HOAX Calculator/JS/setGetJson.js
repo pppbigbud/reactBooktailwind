@@ -22,6 +22,13 @@ function saveInfoJson() {
   // Stockez la chaîne JSON dans localStorage
   localStorage.setItem("data1", jsonData);
 
-  // console.log(updatedData1Cookie);
+  // Après avoir enregistré avec succès, affichez le message de succès
+  const successMessage = document.getElementById("successMessage");
+  successMessage.style.display = "block";
+
+  // Ajoutez un délai pour masquer automatiquement le message après quelques secondes (par exemple, 3 secondes)
+  setTimeout(function() {
+    successMessage.style.display = "none";
+  }, 3000); // 3000 millisecondes (3 secondes)
 
 }

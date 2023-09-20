@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
-    <!-- Inclure votre fichier CSS compilé -->
     <script src="js/calculateGaineInox.js"></script>
     <script src="js/devisGeneration.js"></script>
     <script src="js/calculateDPI-I.js"></script>
@@ -20,6 +19,15 @@
     <title>HOAX Calculator</title>
   </head>
   <body>
+    <div class="containerMessageSuccess">
+      <div
+        id="successMessage"
+        class="MessageSuccess hidden bg-green-200 text-green-800 border border-green-600 px-4 py-2 rounded mt-4"
+      >
+        Enregistrement réussi !
+      </div>
+    </div>
+
     <!-- Menu de navigation -->
     <ul class="menuTop">
       <li class="backgroundInfoClient">
@@ -39,58 +47,133 @@
     <!-- Contenu des sections -->
     <div id="section1" style="display: none">
       <!-- Contenu de la section 1 -->
+      <div class="containerAvatarInfoClient">
+        <div
+          class="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+        >
+          <img
+            class="w-100 h-100 rounded-full"
+            src="/IMG/ImgClient.jpeg"
+            alt="Rounded avatar"
+          />
+        </div>
+      </div>
 
       <div class="containerInfoClient">
-        <form>
+        <form
+          class="mb-8 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        >
           <!-- Name -->
           <label
             for="nom"
-            class="block mt-4 mb-2 text-lg font-medium text-gray-900 dark:text-white"
+            class="block mt-4 mb-2 text-lg text-xl font-normal text-gray-900 dark:text-white"
             >Nom :</label
           >
           <input
             type="text"
             id="nom"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required
           />
           <!-- SurName -->
           <label
-          for="prenom"
-          class="block mt-4 mb-2 text-lg font-medium text-gray-900 dark:text-white"
-          >Prenom :</label
-        >
-        <input
-          type="text"
-          id="prenom"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
-          <!-- Adress -->
-          <label for="adresse">Adresse :</label>
-          <input type="text" id="adresse" required />
-          <!-- ZIP-->
-          <label for="codepostal">Code postal</label>
-          <input id="codepostal" name="codepostal" type="text" required />
-          <!-- Phone-->
-          <label for="telephone">Téléphone</label>
+            for="prenom"
+            class="block mt-4 mb-2 text-lg text-xl font-normal text-gray-900 dark:text-white"
+            >Prenom :</label
+          >
           <input
-            id="telephone"
-            name="telephone"
-            type="tel"
-            placeholder="par ex&nbsp;: +3375500000000"
+            type="text"
+            id="prenom"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
           />
-          <!-- Email-->
-          <label for="email">Email</label>
+          <!-- Adress -->
+          <label
+            for="adresse"
+            class="block mt-4 mb-2 text-lg text-xl font-normal text-gray-900 dark:text-white"
+            >Adresse :</label
+          >
           <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="exemple@domaine.com"
+            type="text"
+            id="adresse"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required
+          />
+          <!-- ZIP-->
+          <label
+            for="codepostal"
+            class="block mt-4 mb-2 text-lg text-xl font-normal text-gray-900 dark:text-white"
+            >Code Postal :</label
+          >
+          <input
+            type="codepostal"
+            id="codepostal"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required
+          />
+          <!-- Phone-->
+          <label
+            for="telephone"
+            class="block mt-4 mb-2 text-lg text-xl font-normal text-gray-900 dark:text-white"
+            >Téléphone :</label
+          >
+          <input
+            name="telephone"
+            type="tel"
+            id="telephone"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
           />
 
-          <button type="button" onclick="saveInfoJson()">
-            Enregistrer Info Client
+          <!-- Email Tailwind-->
+
+          <label
+            for="email"
+            class="block mt-4 mb-2 text-lg text-xl font-normal text-gray-900 dark:text-white"
+            >Email</label
+          >
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 16"
+              >
+                <path
+                  d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
+                />
+                <path
+                  d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
+                />
+              </svg>
+            </div>
+            <input
+              name="email"
+              type="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="name@hoax.fr"
+            />
+          </div>
+
+          <!-- BTN validation Formulaire-->
+
+          <button
+            type="button"
+            onclick="saveInfoJson()"
+            class="mt-8 relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+          >
+            <span
+              class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"
+            ></span>
+            <span
+              class="relative text-xl font-semibold text-gray-900 text-white"
+              >Enregistrer Info Client</span
+            >
           </button>
         </form>
       </div>
@@ -103,121 +186,238 @@
     </div>
 
     <div id="section3" style="display: none">
-      <!-- Contenu de la section 3 -->
-      <h1>Caclul des fournitures pour le conduit de fumée</h1>
-
       <!-- Input pour charger le fichier Excel -->
-      <input type="file" id="excelFileInput" accept=".xlsx" />
-      <br />
-      <br />
-
-      <form>
-        <label for="quantity">GAINE INOX :</label>
-        <input type="number" id="quantityMlGaineInox" min="0" value="0" />
-
-        <!-- Cases à cocher pour choisir le diamètre -->
-        <label>
-          <input type="checkbox" id="diameter125" name="diameter" value="125" />
-          ⌀ 125 cm
-        </label>
-        <label>
-          <input type="checkbox" id="diameter150" name="diameter" value="150" />
-          ⌀ 150 cm
-        </label>
-        <label>
-          <input type="checkbox" id="diameter180" name="diameter" value="180" />
-          ⌀ 180 cm
-        </label>
-        <label>
-          <input type="checkbox" id="diameter180" name="diameter" value="200" />
-          ⌀ 200 cm
-        </label>
-
-        <!-- Zone pour afficher le prix calculé -->
-        <div id="priceResult"></div>
-
-        <button type="button" onclick="calculatePriceGaineInox()">
-          Calculer le Prix
-        </button>
-      </form>
-      <br />
-      <br />
-
-      <!-- !!!!!!!!!!!!!!!!!!LONGUEURS DPI-i!!!!!!!!!!!!!!!!!!!! -->
-
-      <form>
-        <h1>Longueur Double Paroies Isolées</h1>
-        <label for="quantity">Quantité Longueur DPI-I :</label>
+      <div class="containerLoadFile">
         <input
-          type="number"
-          id="quantityDPI-I"
-          min="0"
-          value="0"
-          class="quantity-input"
+          type="file"
+          id="excelFileInput"
+          accept=".xlsx"
+          class="mb-8 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         />
-        <br />
-        <!-- Cases à cocher pour choisir le diamètre -->
-        <label for="diameter">Diamètre DPI-I:</label>
-        <select id="diameter" name="diameter">
-          <option value="150">⌀ 150 cm</option>
-          <option value="180">⌀ 180 cm</option>
-          <option value="200">⌀ 200 cm</option>
-        </select>
-        <br />
-        <!-- Cases à cocher pour choisir le sizeètre -->
-        <label for="size">Taille DPI-I:</label>
-        <select id="size" name="size">
-          <option value="25">25 cm</option>
-          <option value="50">50 cm</option>
-          <option value="100">100 cm</option>
-        </select>
+      </div>
 
-        <!-- Zone pour afficher le prix calculé -->
-        <div id="priceResultDPI-I"></div>
-        <button type="button" onclick="savePriceToLocalStorage()">
-          Ajouter à la configuration
-        </button>
-      </form>
-
-      <!-- !!!!!!!!!!!!!!!!!!COUDES DPI-i!!!!!!!!!!!!!!!!!!!! -->
-
-      <form>
-        <h1>Coudes Double Paroies Isolées</h1>
-        <label for="quantity">Quantité Coude DPI-I :</label>
-        <input
-          type="number"
-          id="quantityCoudeDPI-I"
-          min="0"
-          value="0"
-          class="quantityCoudeDPI-input"
-        />
-        <br />
-        <!-- Cases à cocher pour choisir le diamètre -->
-        <label for="diamCoudeDpiI">Diamètre coude DPI-I:</label>
-        <select id="diamCoudeDpiI" name="diamCoudeDpiI">
-          <option value="80">⌀ 80 mm</option>
-          <option value="100">⌀ 100 mm</option>
-          <option value="130">⌀ 130 mm</option>
-          <option value="150">⌀ 150 mm</option>
-          <option value="180">⌀ 180 mm</option>
-          <option value="200">⌀ 200 mm</option>
-        </select>
-        <br />
-        <!-- Cases à cocher pour choisir le sizeètre -->
-        <label for="coudeInclinaisonDpiI">Degré d'inclinaison:</label>
-        <select id="coudeInclinaisonDpiI" name="coudeInclinaisonDpiI">
-          <option value="15">15°</option>
-          <option value="30">30°</option>
-          <option value="45">45°</option>
-          <option value="90">90°</option>
-        </select>
-
-        <!-- Zone pour afficher le prix calculé -->
-        <div id="priceResultCoudeDPI-I"></div>
-        <button type="button" onclick="savePriceCoudeToLocalStorage()">
-          Ajouter à la configuration
-        </button>
-      </form>
+      <!-- Contenu de la section 3 -->
+      <div class="sectionConduitFumee">
+        <!-- Conteneur GAINE INOX -->
+        <div class="containerGaineInox">
+          <form
+            class="mb-8 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          >
+            <label for="quantityMlGaineInox">GAINE INOX :</label>
+            <input type="number" id="quantityMlGaineInox" min="0" value="0" />
+      
+            <!-- Cases à cocher pour choisir le diamètre -->
+            <label>
+              <input type="checkbox" id="diameter125" name="diameter" value="125" />
+              ⌀ 125 cm
+            </label>
+            <label>
+              <input type="checkbox" id="diameter150" name="diameter" value="150" />
+              ⌀ 150 cm
+            </label>
+            <label>
+              <input type="checkbox" id="diameter180" name="diameter" value="180" />
+              ⌀ 180 cm
+            </label>
+            <label>
+              <input type="checkbox" id="diameter200" name="diameter" value="200" />
+              ⌀ 200 cm
+            </label>
+      
+            <!-- Zone pour afficher le prix calculé -->
+            <div id="priceResultGaineInox"></div>
+      
+            <button type="button" onclick="calculatePriceGaineInox()">
+              Calculer le Prix
+            </button>
+          </form>
+        </div>
+      
+        <!-- Conteneur DPI-i -->
+        <div class="containerDPI_i">
+          <div class="containerAvatarInfoClient">
+            <div
+              class="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+            >
+              <img
+                class="w-100 h-100 rounded-full"
+                src="/IMG/Conduit-douple-paroi-isol-inox.jpg"
+                alt="Rounded avatar"
+              />
+            </div>
+          </div>
+          <div
+            class="mb-8 block max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          >
+            <form class="p-6">
+              <h1 class="mt-8 text-xl font-semibold text-gray-900 dark:text-white">
+                Longueurs Double Paroies Isolées
+              </h1>
+      
+              <!-- Quantité Longueur DPI-I -->
+              <div class="mt-4">
+                <label
+                  for="quantityDPI-I"
+                  class="block text-sm font-medium text-gray-900 dark:text-white"
+                  >Quantité Longueur DPI-I :</label
+                >
+                <input
+                  type="number"
+                  id="quantityDPI-I"
+                  min="0"
+                  value="0"
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 quantity-input"
+                  required
+                />
+              </div>
+      
+              <!-- Diamètre DPI-I -->
+              <div class="mt-4">
+                <label
+                  for="diameter"
+                  class="block text-sm font-medium text-gray-900 dark:text-white"
+                  >Diamètre DPI-I :</label
+                >
+                <select
+                  id="diameter"
+                  name="diameter"
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option value="150">⌀ 150 cm</option>
+                  <option value="180">⌀ 180 cm</option>
+                  <option value="200">⌀ 200 cm</option>
+                </select>
+              </div>
+      
+              <!-- Taille DPI-I -->
+              <div class="mt-4">
+                <label
+                  for="size"
+                  class="block text-sm font-medium text-gray-900 dark:text-white"
+                  >Taille DPI-I :</label
+                >
+                <select
+                  id="size"
+                  name="size"
+                  class="w-full mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option value="25">25 cm</option>
+                  <option value="50">50 cm</option>
+                  <option value="100">100 cm</option>
+                </select>
+              </div>
+      
+              <!-- Bouton Ajouter à la configuration -->
+      
+              <button
+                type="button"
+                onclick="savePriceToLocalStorage()"
+                class="w-full relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+              >
+                <span
+                  class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"
+                ></span>
+                <span id="priceResultDPI-I" class="relative mt-6">Ajouter</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      
+        <!-- Conteneur Coudes DPI-i -->
+        <div class="containerCoudeDPI_i">
+          <div class="containerAvatarInfoClient">
+            <div
+              class="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+            >
+              <img
+                class="w-100 h-100 rounded-full"
+                src="/IMG/Coude-douple-paroi-isol-inox.jpg"
+                alt="Rounded avatar"
+              />
+            </div>
+          </div>
+          <div
+            class="mb-8 block max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          >
+            <form class="p-6">
+              <h1 class="mt-8 text-xl font-semibold text-gray-900 dark:text-white">
+                Coudes Double Paroies Isolées
+              </h1>
+      
+              <!-- Quantité Coude DPI-I -->
+              <div class="mt-4">
+                <label
+                  for="quantityCoudeDPI-I"
+                  class="block text-sm font-medium text-gray-900 dark:text-white"
+                  >Quantité Coude DPI-I :</label
+                >
+                <input
+                  type="number"
+                  id="quantityCoudeDPI-I"
+                  min="0"
+                  value="0"
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 quantityCoudeDPI-input"
+                  required
+                />
+              </div>
+      
+              <!-- Diamètre coude DPI-I -->
+              <div class="mt-4">
+                <label
+                  for="diamCoudeDpiI"
+                  class="block text-sm font-medium text-gray-900 dark:text-white"
+                  >Diamètre coude DPI-I :</label
+                >
+                <select
+                  id="diamCoudeDpiI"
+                  name="diamCoudeDpiI"
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option value="80">⌀ 80 mm</option>
+                  <option value="100">⌀ 100 mm</option>
+                  <option value="130">⌀ 130 mm</option>
+                  <option value="150">⌀ 150 mm</option>
+                  <option value="180">⌀ 180 mm</option>
+                  <option value="200">⌀ 200 mm</option>
+                </select>
+              </div>
+      
+              <!-- Degré d'inclinaison -->
+              <div class="mt-4">
+                <label
+                  for="coudeInclinaisonDpiI"
+                  class="block text-sm font-medium text-gray-900 dark:text-white"
+                  >Degré d'inclinaison :</label
+                >
+                <select
+                  id="coudeInclinaisonDpiI"
+                  name="coudeInclinaisonDpiI"
+                  class="w-full mb-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option value="15">15°</option>
+                  <option value="30">30°</option>
+                  <option value="45">45°</option>
+                  <option value="90">90°</option>
+                </select>
+              </div>
+      
+              <!-- Bouton Ajouter et voir le prix à la configuration pour les Coudes DPI-I -->
+      
+              <button
+                type="button"
+                onclick="savePriceCoudeToLocalStorage()"
+                class="w-full relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+              >
+                <span
+                  class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"
+                ></span>
+                <span id="priceResultCoudeDPI-I" class="relative mt-6">Ajouter</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
     </div>
 
     <div id="section4" style="display: none">

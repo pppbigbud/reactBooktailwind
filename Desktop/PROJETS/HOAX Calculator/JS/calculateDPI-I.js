@@ -78,41 +78,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Affichez le résultat
       var priceResult = document.getElementById("priceResult");
-      priceResultDPIi.textContent = price;
+      priceResultDPIi.textContent = "Ajouter " + price + ' €';
     };
 
     reader.readAsArrayBuffer(file);
   }
 
-  function getSelectedDiameterDPI_I() {
-    // Récupérez toutes les cases à cocher pour les diamètres
-    var checkboxes = document.querySelectorAll('[id^="diam"]');
-    var selectedDiameter = null;
+  // function getSelectedDiameterDPI_I() {
+  //   // Récupérez toutes les cases à cocher pour les diamètres
+  //   var checkboxes = document.querySelectorAll('[id^="diam"]');
+  //   var selectedDiameter = null;
 
-    // Parcourez les cases à cocher pour déterminer laquelle est cochée
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        selectedDiameter = parseInt(checkboxes[i].value);
-        break; // Sortez de la boucle dès qu'une case à cocher cochée est trouvée
-      }
-    }
+  //   // Parcourez les cases à cocher pour déterminer laquelle est cochée
+  //   for (var i = 0; i < checkboxes.length; i++) {
+  //     if (checkboxes[i].checked) {
+  //       selectedDiameter = parseInt(checkboxes[i].value);
+  //       break; // Sortez de la boucle dès qu'une case à cocher cochée est trouvée
+  //     }
+  //   }
 
-    return selectedDiameter;
-  }
+  //   return selectedDiameter;
+  // }
 
-  function getSelectedSizeDPI_I() {
-    // Récupérez toutes les cases à cocher pour les diamètres
-    var checkboxes = document.querySelectorAll('[id^="size"]');
-    var selectedSize = null;
+  // function getSelectedSizeDPI_I() {
+  //   // Récupérez toutes les cases à cocher pour les diamètres
+  //   var checkboxes = document.querySelectorAll('[id^="size"]');
+  //   var selectedSize = null;
 
-    // Parcourez les cases à cocher pour déterminer laquelle est cochée
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        selectedSize = parseInt(checkboxes[i].value);
-        break; // Sortez de la boucle dès qu'une case à cocher cochée est trouvée
-      }
-    }
+  //   // Parcourez les cases à cocher pour déterminer laquelle est cochée
+  //   for (var i = 0; i < checkboxes.length; i++) {
+  //     if (checkboxes[i].checked) {
+  //       selectedSize = parseInt(checkboxes[i].value);
+  //       break; // Sortez de la boucle dès qu'une case à cocher cochée est trouvée
+  //     }
+  //   }
 
-    return selectedSize;
-  }
+  //   return selectedSize;
+  // }
 });

@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Affichez le résultat
       var priceResult = document.getElementById("priceResultCoudeDPI-I");
-      priceResult.textContent = price;
+      priceResult.textContent = "Ajouter " + price + ' €';
     };
 
     reader.readAsArrayBuffer(file);
