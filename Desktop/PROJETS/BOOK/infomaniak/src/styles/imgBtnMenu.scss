@@ -1,15 +1,5 @@
-.bg-image {
-  background-image: url("/src/assets/img/kakemonBtnImg.png");
-  background-size: cover;
-  transition: background-image 0.3s ease-in;
-}
 
-.bg-image:hover {
-  background-image: url("/src/assets/img/kakemonBtnHOVERImg.png");
-  background-size: cover;
-  transition: background-image 0.3s ease-out;
-}
-
+// ----------------------------BACHES----------------------------
 .bg-image-bache {
   background-image: url("/src/assets/img/bacheBtnImg.png");
   background-size: cover;
@@ -21,7 +11,33 @@
   background-size: cover;
   transition: background-image 0.3s ease-out;
 }
+.bg-image-bache:hover p:last-child {
+  color: var(--couleur-txtBtnMenu);
+  // font-weight: 600;
+  // transition: font-weight 0.3s ease-in;
+}
 
+
+// ----------------------------KAKEMONOS----------------------------
+.bg-image {
+  background-image: url("/src/assets/img/kakemonBtnImg.png");
+  background-size: cover;
+  transition: background-image 0.3s ease-in;
+}
+
+.bg-image:hover {
+  background-image: url("/src/assets/img/kakemonBtnHOVERImg.png");
+  background-size: cover;
+  transition: background-image 0.3s ease-out;
+}
+.bg-image:hover p:last-child {
+  color: var(--couleur-txtBtnMenu);
+  // font-weight: 600;
+  // transition: font-weight 0.3s ease-in;
+}
+
+
+// ----------------------------PAPIER----------------------------
 .bg-image-papier {
   background-image: url("/src/assets/img/papierBtnImg.png");
   background-size: cover;
@@ -32,4 +48,28 @@
   background-image: url("/src/assets/img/papierBtnHOVERImg.png");
   background-size: cover;
   transition: background-image 0.3s ease-out;
+}
+.bg-image-papier:hover p:last-child {
+  color: var(--couleur-txtBtnMenu);
+  // font-weight: 600;
+  // transition: font-weight 0.3s ease-in;
+}
+
+
+// ----------------------------ENSEIGNE----------------------------
+.bg-image-enseigne {
+  background-image: url("/src/assets/img/enseigneBtnImg.png");
+  background-size: cover;
+  transition: background-image 0.3s ease-in;
+}
+
+.bg-image-enseigne:hover {
+  background-image: url("/src/assets/img/enseigneBtnHOVERImg.png");
+  background-size: cover;
+  transition: background-image 0.3s ease-out;
+}
+.bg-image-enseigne:hover p:last-child {
+  color: var(--couleur-txtBtnMenu);
+  // font-weight: 600;
+  // transition: font-weight 0.3s ease-in;
 }
